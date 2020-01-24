@@ -13,11 +13,11 @@ public class TitleScreen : MonoBehaviour
 		}
 
 		titleScreen.SetActive (false);
-		PopupManager.instance.ShowMessage ("intro");
+		LoadGame();
 	}
 
 	public void LoadGame ()
 	{
-		UnityEngine.SceneManagement.SceneManager.LoadScene ("Level1Screen");
+		UnityEngine.SceneManagement.SceneManager.LoadScene ("TestScene");
 	}
 }
