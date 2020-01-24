@@ -7,7 +7,7 @@ public class ScoreEffect : MonoBehaviour
 	public float fadeDelay;
 	public float fadeDuration;
 
-	private tk2dSprite _sprite;
+	private SpriteRenderer _sprite;
 	private Transform _transform;
 
 	private float _currentDelay;
@@ -17,7 +17,7 @@ public class ScoreEffect : MonoBehaviour
 
 	void Awake ()
 	{
-		_sprite = GetComponent<tk2dSprite> ();
+		_sprite = GetComponent<SpriteRenderer> ();
 		_startColor = _sprite.color;
 		_transform = transform;
 	}
