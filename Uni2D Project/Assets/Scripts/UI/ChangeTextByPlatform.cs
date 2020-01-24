@@ -1,17 +1,18 @@
 ﻿using UnityEngine;
+using TMPro;
 using System.Collections;
 
-[RequireComponent(typeof(UILabel))]
+[RequireComponent(typeof(TextMeshProUGUI))]
 public class ChangeTextByPlatform : MonoBehaviour 
 {
 	public string mobileText;
 	public string webText;
 
-	private UILabel _label;
+	private TextMeshProUGUI _label;
 
 	void Awake ()
 	{
-		_label = GetComponent<UILabel> ();
+		_label = GetComponent<TextMeshProUGUI> ();
 	}
 
 	void OnEnable ()

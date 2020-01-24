@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using TMPro;
 using System.Collections;
 
 public class ScoreManager : MonoBehaviour 
@@ -19,7 +20,7 @@ public class ScoreManager : MonoBehaviour
 		}
 	}
 
-	public UILabel scoreDisplay;
+	public TextMeshProUGUI scoreDisplay;
 
 	void Awake ()
 	{

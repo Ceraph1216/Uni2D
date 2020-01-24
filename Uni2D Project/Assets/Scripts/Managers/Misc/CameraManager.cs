@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class CameraManager : MonoBehaviour 
@@ -18,8 +19,8 @@ public class CameraManager : MonoBehaviour
 	public Camera uiCamera;
 
 	//public GameObject anchor;
-	public TweenAlpha flash;
-	private UISprite flashSprite;
+	//public TweenAlpha flash;
+	private Image flashSprite;
 	private CameraShake cameraShake;
 
 	//private float lastPos;
@@ -28,7 +29,7 @@ public class CameraManager : MonoBehaviour
 	void Awake () 
 	{
 		mInstance = this;
-		flashSprite = flash.GetComponent<UISprite>();
+		//flashSprite = flash.GetComponent<Image>();
 		cameraShake = Camera.main.GetComponent<CameraShake>();
 
 		//lastPos = main.transform.position.x;
@@ -39,14 +40,14 @@ public class CameraManager : MonoBehaviour
 		cameraShake.Shake(l_intensity, l_decay, l_maxShake);
 	}
 
-	public void FlashScreen(Color l_color, float time = 0.05F)
+	/*public void FlashScreen(Color l_color, float time = 0.05F)
 	{
 		flashSprite.color = l_color;
 
 		flash.duration = time;
 		flash.ResetToBeginning();
 		flash.PlayForward();
-	}
+	}*/
 
 	private void ResetPosition(Transform t)
 	{

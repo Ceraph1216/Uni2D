@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class AdvancedBlinkBehavior : MonoBehaviour 
@@ -12,7 +13,8 @@ public class AdvancedBlinkBehavior : MonoBehaviour
 
 	private MeshRenderer[] meshes;
 	private SkinnedMeshRenderer[] skinnedMeshes;
-	private UIWidget[] widgets;
+	private Image[] images;
+	private SpriteRenderer[] sprites;
 
 	private float currentTime;
 	private float currentBlinkTime;
@@ -26,21 +28,21 @@ public class AdvancedBlinkBehavior : MonoBehaviour
 		{
 			if(isUI)
 			{
-				if(widgets == null || widgets.Length <= 0 || widgets[0] == null || !widgets[0].gameObject.activeSelf)
+				if(images == null || images.Length <= 0 || images[0] == null || !images[0].gameObject.activeSelf)
 				{
 					GetVisuals();
 				}
 
-				return widgets[0].enabled;
+				return images[0].enabled;
 			}
 			else
 			{
-				if(meshes == null || meshes.Length <= 0 || meshes[0] == null || !meshes[0].gameObject.activeSelf)
+				if(sprites == null || sprites.Length <= 0 || sprites[0] == null || !sprites[0].gameObject.activeSelf)
 				{
 					GetVisuals();
 				}
 				
-				return meshes[0].enabled;
+				return sprites[0].enabled;
 			}
 		}
 
@@ -48,24 +50,32 @@ public class AdvancedBlinkBehavior : MonoBehaviour
 		{
 			if(isUI)
 			{
-				if(widgets == null || widgets.Length <= 0 || widgets[0] == null || !widgets[0].gameObject.activeSelf)
+				if(images == null || images.Length <= 0 || images[0] == null || !images[0].gameObject.activeSelf)
 				{
 					GetVisuals();
 				}
 				
-				for(int i = 0; i < widgets.Length; i++)
+				for(int i = 0; i < images.Length; i++)
 				{
-					if(widgets[i] != null)
+					if(images[i] != null)
 					{
-						widgets[i].enabled = value;
+						images[i].enabled = value;
 					}
 				}
 			}
 			else
 			{
-				if(meshes == null || meshes.Length <= 0 || meshes[0] == null || !meshes[0].gameObject.activeSelf)
+				if(sprites == null || sprites.Length <= 0 || sprites[0] == null || !sprites[0].gameObject.activeSelf)
 				{
 					GetVisuals();
+				}
+
+				for(int i = 0; i < sprites.Length; i++)
+				{
+					if(sprites[i] != null)
+					{
+						sprites[i].enabled = value;
+					}
 				}
 
 				for(int i = 0; i < meshes.Length; i++)
@@ -137,12 +147,13 @@ public class AdvancedBlinkBehavior : MonoBehaviour
 	{
 		if(isUI)
 		{
-			widgets = GetComponentsInChildren<UIWidget>();
+			images = GetComponentsInChildren<Image>();
 		}
 		else
 		{
 			meshes = GetComponentsInChildren<MeshRenderer>();
 			skinnedMeshes = GetComponentsInChildren<SkinnedMeshRenderer>();
+			sprites = GetComponentsInChildren<SpriteRenderer>();
 		}
 	}
 
@@ -150,6 +161,7 @@ public class AdvancedBlinkBehavior : MonoBehaviour
 	{
 		meshes = null;
 		skinnedMeshes = null;
-		widgets = null;
+		images = null;
+		sprites = null;
 	}
 }

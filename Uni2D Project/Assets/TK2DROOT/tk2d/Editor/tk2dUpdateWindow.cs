@@ -38,7 +38,7 @@ public class tk2dUpdateWindow : EditorWindow
 
 	void OnGUI()
 	{
-		if (EditorUserBuildSettings.activeBuildTarget == BuildTarget.WebPlayer || 
+		/*if (EditorUserBuildSettings.activeBuildTarget == BuildTarget.WebPlayer || 
 			EditorUserBuildSettings.activeBuildTarget == BuildTarget.WebPlayerStreamed) {
 			GUILayout.Label(platformError);
 
@@ -53,7 +53,7 @@ public class tk2dUpdateWindow : EditorWindow
 			GUILayout.EndHorizontal();
 
 			return;
-		}
+		}*/
 
 		if (validUpdateData)
 		{

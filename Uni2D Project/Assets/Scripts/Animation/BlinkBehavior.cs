@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class BlinkBehavior : MonoBehaviour 
@@ -10,8 +11,8 @@ public class BlinkBehavior : MonoBehaviour
 	public bool startVisible;
 	public bool endVisible;
 
-	private MeshRenderer mesh;
-	private UIWidget widget;
+	private SpriteRenderer sprite;
+	private Image image;
 
 	private float currentTime;
 	private float currentBlinkTime;
@@ -24,11 +25,11 @@ public class BlinkBehavior : MonoBehaviour
 	{
 		if(isUI)
 		{
-			widget = GetComponent<UIWidget>();
+			image = GetComponent<Image>();
 		}
 		else
 		{
-			mesh = GetComponent<MeshRenderer>();
+			sprite = GetComponent<SpriteRenderer>();
 		}
 	}
 	
@@ -38,11 +39,11 @@ public class BlinkBehavior : MonoBehaviour
 
 		if(isUI)
 		{
-			widget.enabled = startVisible;
+			image.enabled = startVisible;
 		}
 		else
 		{
-			mesh.enabled = startVisible;
+			sprite.enabled = startVisible;
 		}
 
 		SoftPauseScript.instance.AddToHandler(Enums.UpdateType.EarlySoftUpdate, SoftUpdate);
@@ -54,16 +55,16 @@ public class BlinkBehavior : MonoBehaviour
 
 		if(isUI)
 		{
-			if(widget != null)
+			if(image != null)
 			{
-				widget.enabled = endVisible;
+				image.enabled = endVisible;
 			}
 		}
 		else
 		{
-			if(mesh != null)
+			if(sprite != null)
 			{
-				mesh.enabled = endVisible;
+				sprite.enabled = endVisible;
 			}
 		}
 	}
@@ -91,11 +92,11 @@ public class BlinkBehavior : MonoBehaviour
 				currentBlinkTime = 0;
 				if(isUI)
 				{
-					widget.enabled = !widget.enabled;
+					image.enabled = !image.enabled;
 				}
 				else
 				{
-					mesh.enabled = !mesh.enabled;
+					sprite.enabled = !sprite.enabled;
 				}
 			}
 		}

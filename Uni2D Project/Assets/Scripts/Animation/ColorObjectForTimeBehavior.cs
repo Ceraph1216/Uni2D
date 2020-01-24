@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class ColorObjectForTimeBehavior : MonoBehaviour 
@@ -9,7 +10,7 @@ public class ColorObjectForTimeBehavior : MonoBehaviour
 	public enum ObjectType
 	{
 		tk2d,
-		NGUI,
+		UI,
 		Mesh,
 		SkinnedMesh,
 		Sprite
@@ -33,8 +34,8 @@ public class ColorObjectForTimeBehavior : MonoBehaviour
 					case ObjectType.tk2d:
 						//_obj = GetComponent<tk2dSprite>();
 						break;
-					case ObjectType.NGUI:
-						_obj = GetComponent<UIWidget>();
+					case ObjectType.UI:
+						_obj = GetComponent<Image>();
 						break;
 					case ObjectType.Mesh:
 						_obj = GetComponent<MeshRenderer>();
@@ -60,8 +61,8 @@ public class ColorObjectForTimeBehavior : MonoBehaviour
 			{
 				case ObjectType.tk2d:
 					//return (obj as tk2dSprite).color;
-				case ObjectType.NGUI:
-					return (obj as UIWidget).color;
+				case ObjectType.UI:
+					return (obj as Image).color;
 				case ObjectType.Mesh:
 					return (obj as MeshRenderer).material.color;
 				case ObjectType.SkinnedMesh:
@@ -80,8 +81,8 @@ public class ColorObjectForTimeBehavior : MonoBehaviour
 				case ObjectType.tk2d:
 					//(obj as tk2dSprite).color = value;
 					break;
-				case ObjectType.NGUI:
-					(obj as UIWidget).color = value;
+				case ObjectType.UI:
+					(obj as Image).color = value;
 					break;
 				case ObjectType.Mesh:
 					MeshRenderer l_mesh = (obj as MeshRenderer);
