@@ -8,10 +8,10 @@ public class Player : MonoBehaviour
 
 	public static Player instance;
 
-	public tk2dSpriteAnimator animator;
+	public Animator animator;
 
 	private Rigidbody2D _rigidbody;
-	private BasicPlayerMovementScript _movement;
+	private BasicPlayerMovement _movement;
 	private BoxCollider2D _hitbox;
 	private Transform _transform;
 
@@ -28,7 +28,7 @@ public class Player : MonoBehaviour
 		instance = this;
 
 		_rigidbody = GetComponent<Rigidbody2D> ();
-		_movement = GetComponent<BasicPlayerMovementScript> ();
+		_movement = GetComponent<BasicPlayerMovement> ();
 		_hitbox = GetComponent<BoxCollider2D> ();
 		_transform = transform;
 
@@ -38,7 +38,7 @@ public class Player : MonoBehaviour
 	public void Die ()
 	{
 		SetControl(false);
-		animator.Play ("death");
+		PlayAnimation ("death");
 
 		StartCoroutine (DeathCountdown ());
 	}
@@ -76,14 +76,14 @@ public class Player : MonoBehaviour
 		}
 		transform.position = CheckpointManager.instance.currentCheckpoint.spawnPoint;
 		SetControl(true);
-		animator.Play ("idle");
+		PlayAnimation ("idle");
 		_movement.Respawn ();
 	}
 
 	public void HitGoal ()
 	{
 		SetControl(false);
-		animator.Play ("idle");
+		PlayAnimation ("idle");
 	}
 
 	public void HitAdvance ()
@@ -92,18 +92,12 @@ public class Player : MonoBehaviour
 		ProgressManager.instance.Win ();
 	}
 
-	public void HitBadAnswer ()
-	{
-		SetControl (false);
-		PopupManager.instance.ShowMessage ("badAnswer");
-	}
-
 	public void LaunchPlayer (int p_correct, int p_given)
 	{
 		Vector2 l_launchDirection = new Vector2 (1f, 1f);
 		_rigidbody.simulated = true;
 		_hitbox.enabled = true;
-		animator.Play ("jump");
+		PlayAnimation ("jump");
 
 		Vector2 l_launchForce = Vector2.zero;
 
@@ -132,6 +126,16 @@ public class Player : MonoBehaviour
 		_rigidbody.simulated = p_control;
 		_rigidbody.velocity = (p_control) ? Vector2.zero : _rigidbody.velocity;
 		_hitbox.enabled = p_control;
+	}
+
+	public void PlayAnimation (string p_animationName)
+	{
+		if (animator.GetCurrentAnimatorStateInfo(0).IsName(p_animationName))
+		{
+			return;
+		}
+
+		animator.SetTrigger(p_animationName);
 	}
 
 	/*private void OnAnimationComplete(tk2dSpriteAnimator anim, tk2dSpriteAnimationClip clip)
