@@ -34,7 +34,7 @@ public class FullCamera : MonoBehaviour
 	public State currentState;
 	float trickZoom = -10.0f;
 
-	void OnEnable()
+	/*void OnEnable()
 	{
 		//SoftPauseScript.instance.SoftUpdate += SoftUpdate;
 		SoftPauseScript.instance.AddToHandler(Enums.UpdateType.FixedSoftUpdate, SoftLateUpdate);
@@ -44,16 +44,16 @@ public class FullCamera : MonoBehaviour
 	{
 		//SoftPauseScript.instance.SoftUpdate -= SoftUpdate;
 		SoftPauseScript.instance.RemoveFromHandler(Enums.UpdateType.FixedSoftUpdate, SoftLateUpdate);
-	}
+	}*/
 	
 	// Update is called once per frame
-	void SoftUpdate (GameObject dispatcher) 
+	void Update () 
 	{
-		ZoomUpdate();
+		//ZoomUpdate();
 	}
 
 	// Update is called once per frame
-	void SoftLateUpdate (GameObject dispatcher) 
+	void LateUpdate () 
 	{
 		FollowLateUpdate();
 		ShakeLateUpdate();
