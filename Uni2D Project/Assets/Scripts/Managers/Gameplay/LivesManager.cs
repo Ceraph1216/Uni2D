@@ -98,10 +98,13 @@ public class LivesManager : MonoBehaviour
 
 	private void Die ()
 	{
-		SoftPauseScript.softPaused = true;
+		lives = 3;
+		Player.instance.Respawn();
+
+		/*SoftPauseScript.softPaused = true;
 		Time.timeScale = 0f;
 
-		PopupManager.instance.ShowMessage ("gameOver");
+		PopupManager.instance.ShowMessage ("gameOver");*/
 	}
 
 	public void Revive ()

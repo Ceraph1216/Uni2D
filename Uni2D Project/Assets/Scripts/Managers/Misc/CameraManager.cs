@@ -19,7 +19,7 @@ public class CameraManager : MonoBehaviour
 	public Camera uiCamera;
 
 	//public GameObject anchor;
-	//public TweenAlpha flash;
+	public TweenColor flash;
 	private Image flashSprite;
 	private CameraShake cameraShake;
 
@@ -29,7 +29,7 @@ public class CameraManager : MonoBehaviour
 	void Awake () 
 	{
 		mInstance = this;
-		//flashSprite = flash.GetComponent<Image>();
+		flashSprite = flash.GetComponent<Image>();
 		cameraShake = Camera.main.GetComponent<CameraShake>();
 
 		//lastPos = main.transform.position.x;
@@ -40,14 +40,17 @@ public class CameraManager : MonoBehaviour
 		cameraShake.Shake(l_intensity, l_decay, l_maxShake);
 	}
 
-	/*public void FlashScreen(Color l_color, float time = 0.05F)
+	public void FlashScreen(Color l_color, float time = 0.05F)
 	{
 		flashSprite.color = l_color;
+
+		flash.from = l_color;
+		flash.to = new Color(l_color.r, l_color.g, l_color.b, 0);
 
 		flash.duration = time;
 		flash.ResetToBeginning();
 		flash.PlayForward();
-	}*/
+	}
 
 	private void ResetPosition(Transform t)
 	{
