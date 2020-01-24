@@ -50,13 +50,14 @@ public class FullCamera : MonoBehaviour
 	void Update () 
 	{
 		//ZoomUpdate();
+		FollowLateUpdate();
+		ShakeLateUpdate();
 	}
 
 	// Update is called once per frame
 	void LateUpdate () 
 	{
-		FollowLateUpdate();
-		ShakeLateUpdate();
+		
 	}
 
 	void Awake() 
