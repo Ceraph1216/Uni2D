@@ -110,13 +110,13 @@ public class InputManager : MonoBehaviour
 	
 		float l_horizontal = Input.GetAxis ("Horizontal");
 
-		if (l_horizontal != 0) 
+		/*if (l_horizontal != 0) 
 		{
 			if (!AbilityManager.instance.HasAbility (AbilityManager.Ability.Vector)) 
 			{
 				return 1;
 			}
-		}
+		}*/
 
 		return l_horizontal;
 	}
@@ -134,7 +134,7 @@ public class InputManager : MonoBehaviour
 			return l_jumpDown;
 		}
 
-		return Input.GetKeyDown (KeyCode.Space);
+		return Input.GetAxis ("Jump") > 0;
 	}
 
 	public bool GetSuperJumpCharging ()
@@ -144,7 +144,7 @@ public class InputManager : MonoBehaviour
 			return _isSuperJumpDown;
 		}
 
-		return Input.GetKey (KeyCode.W);
+		return Input.GetAxis ("SuperJump") > 0;
 	}
 
 	public bool GetSuperJumpEnd ()
@@ -154,7 +154,7 @@ public class InputManager : MonoBehaviour
 			return !_isSuperJumpDown;
 		}
 
-		return Input.GetKeyUp (KeyCode.W);
+		return Input.GetAxis ("SuperJump") <= 0;
 	}
 
 	public bool GetSlide ()
@@ -170,7 +170,7 @@ public class InputManager : MonoBehaviour
 			return l_slideDown;
 		}
 
-		return Input.GetKeyDown (KeyCode.S);
+		return Input.GetAxis ("Slide") > 0;
 	}
 
 	public bool GetGraityFlip ()
@@ -186,7 +186,7 @@ public class InputManager : MonoBehaviour
 			return l_gravityDown;
 		}
 
-		return Input.GetKeyDown (KeyCode.G);
+		return Input.GetAxis ("Gravity") > 0;
 	}
 
 	public void ResetInputs ()

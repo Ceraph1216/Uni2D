@@ -306,8 +306,8 @@ public class BasicPlayerMovement : MonoBehaviour
 		Vector3 newVelocity = myRigidbody.velocity;
 
 		// Listen for button presses
-		if (AbilityManager.instance.HasAbility (AbilityManager.Ability.Vector)) 
-		{
+		//if (AbilityManager.instance.HasAbility (AbilityManager.Ability.Vector)) 
+		//{
 			if (InputManager.instance.GetJump ()) 
 			{
 				if (PlayerStateManager.instance.currentGroundState == Enums.PlayerGroundState.OnGround) 
@@ -329,7 +329,7 @@ public class BasicPlayerMovement : MonoBehaviour
 					_currentLaunchDuration = Constants.LAUNCH_TIMER;
 				}
 			}
-		}
+		//}
 
 		if (_currentLaunchDuration > 0)
 		{
